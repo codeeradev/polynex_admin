@@ -1,0 +1,115 @@
+/* Election switcher + elections table — layered on top of ui.css tokens. */
+
+.election-switcher-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 20px;
+  padding: 6px 8px 6px 14px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  max-width: 260px;
+  transition: background 0.15s ease;
+}
+
+.election-switcher-trigger:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.election-switcher-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.election-switcher-caret {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.election-switcher-skeleton {
+  width: 160px;
+  height: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.election-switcher-empty,
+.election-switcher-empty-link {
+  font-size: 13px;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.election-switcher-empty-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.election-switcher-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.election-switcher-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.election-switcher-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--u-ink);
+}
+
+.election-switcher-item:hover {
+  background: var(--u-bg);
+}
+
+.election-switcher-item-check {
+  width: 14px;
+  color: var(--u-blue);
+  font-weight: 700;
+}
+
+.election-switcher-item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.election-switcher-manage {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--u-blue);
+  padding: 10px;
+  margin-top: 4px;
+  border-top: 1px solid var(--u-line);
+  text-decoration: none;
+}
+
+.election-switcher-manage:hover {
+  background: var(--u-blue-wash);
+  border-radius: 0 0 8px 8px;
+}

@@ -1,0 +1,394 @@
+/*
+ * Shared design tokens + primitives for the internal admin app
+ * (everything behind login). Distinct on purpose from auth.css, which
+ * is the branded/colorful entry screen — this file is the calm,
+ * information-dense "Google Workspace admin console" register the
+ * rest of the product lives in.
+ *
+ * Colors fall back to Google's own Material palette when the app's
+ * global --color-* tokens aren't defined, so this degrades gracefully
+ * if global.css hasn't set them yet.
+ */
+
+:root {
+  --u-ink: var(--color-text, #202124);
+  --u-slate: var(--color-text-muted, #5f6368);
+  --u-line: var(--color-border, #dadce0);
+  --u-surface: var(--color-surface, #ffffff);
+  --u-bg: var(--color-bg, #f8f9fa);
+
+  --u-blue: var(--color-primary, #1a73e8);
+  --u-blue-deep: #174ea6;
+  --u-blue-wash: #e8f0fe;
+
+  --u-green: #1e8e3e;
+  --u-green-wash: #e6f4ea;
+  --u-red: #d93025;
+  --u-red-wash: #fce8e6;
+  --u-gray-wash: #f1f3f4;
+
+  --u-radius-sm: 8px;
+  --u-radius-md: 12px;
+  --u-shadow-1: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --u-shadow-2: 0 2px 6px rgba(60, 64, 67, 0.15), 0 4px 12px rgba(60, 64, 67, 0.1);
+}
+
+/* ---------- Buttons ---------- */
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 9px 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  line-height: 1.2;
+}
+
+.ui-btn-sm {
+  padding: 5px 14px;
+  font-size: 13px;
+}
+
+.ui-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ui-btn-primary {
+  background: var(--u-blue);
+  color: #fff;
+}
+
+.ui-btn-primary:hover:not(:disabled) {
+  background: var(--u-blue-deep);
+  box-shadow: var(--u-shadow-1);
+}
+
+.ui-btn-secondary {
+  background: var(--u-surface);
+  color: var(--u-blue);
+  border-color: var(--u-line);
+}
+
+.ui-btn-secondary:hover:not(:disabled) {
+  background: var(--u-blue-wash);
+  border-color: var(--u-blue);
+}
+
+.ui-btn-text {
+  background: transparent;
+  color: var(--u-blue);
+  padding: 9px 12px;
+}
+
+.ui-btn-text:hover:not(:disabled) {
+  background: var(--u-blue-wash);
+}
+
+.ui-btn-danger {
+  background: var(--u-surface);
+  color: var(--u-red);
+  border-color: var(--u-line);
+}
+
+.ui-btn-danger:hover:not(:disabled) {
+  background: var(--u-red-wash);
+  border-color: var(--u-red);
+}
+
+.ui-btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ui-spin 0.7s linear infinite;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-btn-spinner {
+    animation: none;
+  }
+}
+
+/* ---------- Card ---------- */
+
+.ui-card {
+  background: var(--u-surface);
+  border: 1px solid var(--u-line);
+  border-radius: var(--u-radius-md);
+  padding: 24px 28px;
+}
+
+.ui-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.ui-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--u-ink);
+  margin: 0;
+}
+
+.ui-card-subtitle {
+  font-size: 13px;
+  color: var(--u-slate);
+  margin: 0 0 20px;
+}
+
+.ui-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- Badge ---------- */
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  line-height: 1.4;
+}
+
+.ui-badge-success {
+  background: var(--u-green-wash);
+  color: var(--u-green);
+}
+
+.ui-badge-neutral {
+  background: var(--u-gray-wash);
+  color: var(--u-slate);
+}
+
+.ui-badge-danger {
+  background: var(--u-red-wash);
+  color: var(--u-red);
+}
+
+.ui-badge-info {
+  background: var(--u-blue-wash);
+  color: var(--u-blue-deep);
+}
+
+/* ---------- Table ---------- */
+
+.ui-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.ui-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--u-slate);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--u-line);
+}
+
+.ui-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--u-line);
+  color: var(--u-ink);
+}
+
+.ui-table tbody tr:hover {
+  background: var(--u-bg);
+}
+
+/* ---------- Menu / dropdown ---------- */
+
+.ui-menu-root {
+  position: relative;
+  display: inline-block;
+}
+
+.ui-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  background: var(--u-surface);
+  border: 1px solid var(--u-line);
+  border-radius: var(--u-radius-sm);
+  box-shadow: var(--u-shadow-2);
+  z-index: 30;
+  padding: 8px;
+}
+
+/* ---------- Modal ---------- */
+
+.ui-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(32, 33, 36, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+
+.ui-modal {
+  width: 100%;
+  max-width: 480px;
+  background: var(--u-surface);
+  border-radius: var(--u-radius-md);
+  box-shadow: var(--u-shadow-2);
+  outline: none;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 0;
+}
+
+.ui-modal-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--u-ink);
+  margin: 0;
+}
+
+.ui-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--u-slate);
+  font-size: 16px;
+  padding: 6px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.ui-modal-close:hover {
+  background: var(--u-gray-wash);
+}
+
+.ui-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+.ui-modal-footer {
+  padding: 0 24px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ---------- Form field ---------- */
+
+.ui-field {
+  margin-bottom: 16px;
+}
+
+.ui-field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--u-slate);
+  margin-bottom: 6px;
+}
+
+.ui-field-input {
+  width: 100%;
+  border: 1px solid var(--u-line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--u-ink);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  background: var(--u-surface);
+}
+
+.ui-field-input:focus {
+  border-color: var(--u-blue);
+  box-shadow: 0 0 0 3px var(--u-blue-wash);
+}
+
+.ui-field-error {
+  font-size: 12px;
+  color: var(--u-red);
+  margin: 6px 0 0;
+}
+
+.ui-form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.ui-form-row .ui-field {
+  flex: 1;
+}
+
+.ui-form-error {
+  font-size: 13px;
+  color: var(--u-red);
+  background: var(--u-red-wash);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 0 0 16px;
+}
+
+.ui-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ---------- Empty state ---------- */
+
+.ui-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--u-slate);
+}
+
+.ui-empty-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.ui-empty-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--u-ink);
+  margin: 0 0 4px;
+}
+
+.ui-empty-description {
+  font-size: 13px;
+  margin: 0 0 16px;
+}

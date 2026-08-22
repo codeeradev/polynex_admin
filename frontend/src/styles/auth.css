@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --g-ink: #202124;
+  --g-slate: #5f6368;
+  --g-line: #dadce0;
+  --g-line-strong: #bdc1c6;
+  --g-azure: #1a73e8;
+  --g-azure-deep: #174ea6;
+  --g-azure-wash: #e8f0fe;
+  --g-alert: #d93025;
+  --g-alert-wash: #fce8e6;
+  --g-surface: #ffffff;
+  --g-page: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.auth-screen {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--g-page);
+  font-family: 'Roboto', Arial, sans-serif;
+  padding: var(--space-5, 24px);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  background: var(--g-surface);
+  border: 1px solid var(--g-line);
+  border-radius: 28px;
+  padding: 48px 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    border: none;
+    border-radius: 0;
+    padding: 32px 24px;
+    min-height: 100vh;
+  }
+}
+
+/* ---------- Brand ---------- */
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.auth-brand-mark {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 10px;
+  background: var(--g-azure);
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--g-ink);
+}
+
+.auth-brand-name span {
+  color: var(--g-azure);
+}
+
+.auth-brand-tagline {
+  font-size: 12px;
+  color: var(--g-slate);
+  margin-top: 1px;
+}
+
+/* ---------- Headings ---------- */
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--g-ink);
+  margin: 0 0 4px;
+  letter-spacing: 0;
+}
+
+.auth-subtitle {
+  font-size: 16px;
+  color: var(--g-ink);
+  margin: 0 0 28px;
+  line-height: 1.4;
+}
+
+.auth-subtitle strong {
+  font-weight: 500;
+}
+
+/* ---------- Account chip (step 2 identity confirmation) ---------- */
+
+.auth-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--g-line);
+  border-radius: 20px;
+  padding: 6px 14px 6px 6px;
+  margin-bottom: 28px;
+  cursor: pointer;
+  background: transparent;
+  font-family: inherit;
+  transition: box-shadow 0.15s ease;
+}
+
+.auth-chip:hover {
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+.auth-chip-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--g-azure);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.auth-chip-label {
+  font-size: 14px;
+  color: var(--g-ink);
+}
+
+.auth-chip-caret {
+  font-size: 10px;
+  color: var(--g-slate);
+}
+
+/* ---------- Segmented role toggle ---------- */
+
+.auth-segment {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.auth-segment-btn {
+  flex: 1;
+  border: 1px solid var(--g-line);
+  background: var(--g-surface);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--g-slate);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.auth-segment-btn:hover {
+  border-color: var(--g-line-strong);
+}
+
+.auth-segment-btn[aria-pressed='true'] {
+  border-color: var(--g-azure);
+  border-width: 2px;
+  padding: 9px 11px;
+  color: var(--g-azure-deep);
+  background: var(--g-azure-wash);
+}
+
+.auth-segment-hint {
+  font-size: 12px;
+  color: var(--g-slate);
+  margin: -12px 0 20px;
+}
+
+/* ---------- Form ---------- */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--g-slate);
+  margin-bottom: 6px;
+}
+
+.auth-input {
+  width: 100%;
+  border: 1px solid var(--g-line);
+  border-radius: 4px;
+  padding: 13px 15px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--g-ink);
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  background: var(--g-surface);
+}
+
+.auth-input:focus {
+  border-color: var(--g-azure);
+  border-width: 2px;
+  padding: 12px 14px;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.auth-input::placeholder {
+  color: #80868b;
+}
+
+.auth-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--g-alert-wash);
+  color: var(--g-alert);
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: -8px 0 20px;
+  line-height: 1.4;
+}
+
+/* ---------- Actions row ---------- */
+
+.auth-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.auth-link-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--g-azure-deep);
+  cursor: pointer;
+  padding: 10px 8px;
+  border-radius: 4px;
+}
+
+.auth-link-btn:hover {
+  background: var(--g-azure-wash);
+}
+
+.btn.btn-primary.auth-submit {
+  background: var(--g-azure);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn.btn-primary.auth-submit:hover:not(:disabled) {
+  background: var(--g-azure-deep);
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+.btn.btn-primary.auth-submit:disabled {
+  background: #f1f3f4;
+  color: #80868b;
+  cursor: not-allowed;
+}
+
+/* ---------- Step transition ---------- */
+
+.auth-step-enter {
+  animation: auth-step-in 0.22s ease;
+}
+
+@keyframes auth-step-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-step-enter {
+    animation: none;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.auth-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--g-slate);
+  margin-top: 32px;
+}
